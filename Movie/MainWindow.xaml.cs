@@ -112,7 +112,7 @@ namespace Movie
         }
 
 
-            BlurEffect blur = new BlurEffect();
+        BlurEffect blur = new BlurEffect();
         int counter = 0;
         private void searchfilmBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -124,8 +124,8 @@ namespace Movie
                     blur.KernelType = KernelType.Gaussian;
                     blur.Radius = 100;
                     blur.RenderingBias = RenderingBias.Quality;
-                    secondGrid.Background = new SolidColorBrush(Color.FromRgb(0,0,0));
-                    secondGridLbl.Content = item.FilmName;
+                    secondGrid.Background = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+                    secondGridtxtBox.Text = item.FilmName;
                     BitmapImage bitmap = new BitmapImage();
                     bitmap.BeginInit();
                     bitmap.UriSource = new Uri(item.ImagePath, UriKind.Relative);
@@ -138,10 +138,10 @@ namespace Movie
                 }
                 else
                 {
-                    if (counter == 10)
+                    if (counter == Films.Count)
                     {
-                        addBtn.Visibility=Visibility.Visible;
-                        changeBtn.Visibility=Visibility.Hidden;
+                        addBtn.Visibility = Visibility.Visible;
+                        changeBtn.Visibility = Visibility.Hidden;
                         cancelBtn.FontWeight = FontWeights.DemiBold;
                         cancelBtn.FontSize = 15;
                         cancelBtn.Width = 80;
@@ -153,35 +153,25 @@ namespace Movie
                         var name = searchTextbox.Text;
                         try
                         {
-
-                        
-                        HttpResponseMessage response = new HttpResponseMessage();
-                        response = httpClient.GetAsync($@"http://www.omdbapi.com/?apikey=3eb9dfa5&s={name}&plot=full").Result;
-
-                        var str = response.Content.ReadAsStringAsync().Result;
-                        Data = JsonConvert.DeserializeObject(str);
-
-                        response = httpClient.GetAsync($@"http://www.omdbapi.com/?apikey=3eb9dfa5&t={Data.Search[0].Title}&plot=full").Result;
-
-                        str = response.Content.ReadAsStringAsync().Result;
-                        SingleData = JsonConvert.DeserializeObject(str);
-
-                        secondGridImage.Stretch = Stretch.Fill;
-                        secondGridImage.Source = SingleData.Poster;
-                        secondGridImage.Source = SingleData.Poster;
-                        Minute = SingleData.RunTime;
-                        Title = SingleData.Title;
-
-                        secondGridLbl.Content = Minute + "  " + Title;
-                        secondGrid.Visibility = Visibility.Visible;
-                        mainGrid.Effect = blur;
-                        mainGrid.IsEnabled = false;
-
-
-                        response = httpClient.GetAsync($@"http://www.omdbapi.com/?apikey=3eb9dfa5&t={Data.Search[1].Title}&plot=full").Result;
-
-                        str = response.Content.ReadAsStringAsync().Result;
-                        SingleData = JsonConvert.DeserializeObject(str);
+                            HttpResponseMessage response = new HttpResponseMessage();
+                            response = httpClient.GetAsync($@"http://www.omdbapi.com/?apikey=3eb9dfa5&s={name}&plot=full").Result;
+                            var str = response.Content.ReadAsStringAsync().Result;
+                            Data = JsonConvert.DeserializeObject(str);
+                            response = httpClient.GetAsync($@"http://www.omdbapi.com/?apikey=3eb9dfa5&t={Data.Search[0].Title}&plot=full").Result;
+                            str = response.Content.ReadAsStringAsync().Result;
+                            SingleData = JsonConvert.DeserializeObject(str);
+                            secondGridImage.Stretch = Stretch.Fill;
+                            secondGridImage.Source = SingleData.Poster;
+                            secondGridImage.Source = SingleData.Poster;
+                            Minute = SingleData.RunTime;
+                            Title = SingleData.Title;
+                            secondGridtxtBox.Text = Minute + "  " + Title;
+                            secondGrid.Visibility = Visibility.Visible;
+                            mainGrid.Effect = blur;
+                            mainGrid.IsEnabled = false;
+                            response = httpClient.GetAsync($@"http://www.omdbapi.com/?apikey=3eb9dfa5&t={Data.Search[1].Title}&plot=full").Result;
+                            str = response.Content.ReadAsStringAsync().Result;
+                            SingleData = JsonConvert.DeserializeObject(str);
                         }
                         catch (Exception)
                         {
@@ -199,7 +189,7 @@ namespace Movie
             var item = listbox.SelectedItem as Film;
             changeBtn.Visibility = Visibility.Visible;
             blur.KernelType = KernelType.Gaussian;
-            secondGridLbl.Content = item.FilmName;
+            secondGridtxtBox.Text = item.FilmName;
             blur.Radius = 100;
             blur.RenderingBias = RenderingBias.Quality;
             secondGrid.Background = new SolidColorBrush(Color.FromRgb(0, 0, 0));
@@ -257,9 +247,9 @@ namespace Movie
         private void addBtn_Click_1(object sender, RoutedEventArgs e)
         {
             Film newFilm = new Film();
-            var item1 = secondGridLbl.Content;
+            var item1 = secondGridtxtBox.Text;
 
-            newFilm.FilmName = secondGridLbl.Content.ToString();
+            newFilm.FilmName = secondGridtxtBox.Text;
             newFilm.ImagePath = secondGridImage.Source.ToString();
             foreach (var item in listbox.Items)
             {
@@ -279,7 +269,6 @@ namespace Movie
             }
             if (IsChecked)
             {
-                //ListBox listbox = new ListBox();
                 Films.Add(newFilm);
                 listbox.ItemsSource = null;
                 listbox.ItemsSource = Films;

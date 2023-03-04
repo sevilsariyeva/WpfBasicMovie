@@ -90,7 +90,7 @@
                                 <Label HorizontalContentAlignment="Center" Name="imageLbl" Height="200" Margin="46,50,37,50">
                                     <Image Stretch="Uniform" Name="image" Source="{Binding ImagePath}"></Image>
                                 </Label>
-                                <Label Content="{Binding FilmName}"  Name="filmnameLbl" HorizontalContentAlignment="Center" Foreground="WhiteSmoke" FontSize="20" Width="200" Margin="24,0,14,256"/>
+                                <TextBox Text="{Binding FilmName}" BorderThickness="0" TextWrapping="Wrap" Background="Transparent"  Name="filmnametxtBox" HorizontalContentAlignment="Center" Foreground="WhiteSmoke" FontSize="18" Width="200" Margin="24,0,14,256"/>
                                 <Button  Name="editBtn" Click="editBtn_Click" Background="#3792cb" Foreground="White" Width="70" Height="30" Margin="86,262,82,8" Content="Edit" FontSize="20" >
                                     <Button.Resources>
                                         <Style TargetType="Border">
@@ -105,7 +105,7 @@
             </ListBox>
         </Grid>
         <Grid Name="secondGrid" Visibility="Hidden" Width="400" Height="500">
-            <Label HorizontalContentAlignment="Center" Foreground="White" FontSize="20" Name="secondGridLbl" Width="300" Height="40" Margin="50,4,50,466"></Label>
+            <TextBox HorizontalContentAlignment="Center" BorderThickness="0" Background="Transparent" TextWrapping="Wrap" Foreground="White" FontSize="20" Name="secondGridtxtBox" Width="300" Height="40" Margin="50,4,50,466"></TextBox>
             <Image Name="secondGridImage" Margin="65,67,69,93"/>
             <Button Click="changeBtn_Click" Background="DarkGoldenrod" Foreground="White" FontSize="18" FontWeight="ExtraBlack" Panel.ZIndex="1" Name="changeBtn" Content="Change Image" Width="130" Height="30" Margin="65,445,205,25"></Button>
             <Button Visibility="Hidden" Name="addBtn" Width="80" Height="30" Content="Add" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="65,445,255,25" Background="#e8ded1" Click="addBtn_Click_1"></Button>
