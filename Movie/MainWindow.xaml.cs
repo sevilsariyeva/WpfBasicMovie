@@ -270,10 +270,11 @@ namespace Movie
             if (IsChecked)
             {
                 Films.Add(newFilm);
+                MessageBox.Show("Film is successfully added!");
                 listbox.ItemsSource = null;
                 listbox.ItemsSource = Films;
             }
-            MessageBox.Show("Film is successfully added!");
+           
         }
     }
 }

@@ -64,7 +64,7 @@
                     <ImageBrush ImageSource="images/search.png" Stretch="Uniform"></ImageBrush>
                 </Button.Background>
             </Button>
-            <ListBox  ItemsSource="{Binding Films}" Name="listbox" Margin="0,50,0,0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox BorderThickness="0"  ItemsSource="{Binding Films}" Name="listbox" Margin="0,50,0,0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Margin="30,10,0,0" Orientation="Horizontal"></WrapPanel>
