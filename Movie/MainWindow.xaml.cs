@@ -47,55 +47,55 @@ namespace Movie
             },
             new Film
             {
-                Id=1,
+                Id=2,
                 FilmName="FOREVER",
                 ImagePath="images/forever.jpg"
             },
             new Film
             {
-                Id=1,
+                Id=3,
                 FilmName="GIFTED",
                 ImagePath="images/gifted.jpg"
             },
             new Film
             {
-                Id=1,
+                Id=4,
                 FilmName="IRON MAN",
                 ImagePath="images/ironman.jpg"
             },
             new Film
             {
-                Id=1,
+                Id=5,
                 FilmName="STRANGER THINGS",
                 ImagePath="images/strangerthings.jpg"
             },
             new Film
             {
-                Id=1,
+                Id=6,
                 FilmName="SHERLOCK HOLMES",
                 ImagePath="images/sherlock.jpg"
             },
             new Film
             {
-                Id=1,
+                Id=7,
                 FilmName="CHERNOBYL",
                 ImagePath="images/chernobyl.jpg"
             },
             new Film
             {
-                Id=1,
+                Id=8,
                 FilmName="THE GREEN MILE",
                 ImagePath="images/greenmile.jpg"
             },
             new Film
             {
-                Id=1,
+                Id=9,
                 FilmName="11.22.63",
                 ImagePath="images/112263.jpg"
             },
             new Film
             {
-                Id=1,
+                Id=10,
                 FilmName="WONDER",
                 ImagePath="images/wonder.jpg"
             }
